@@ -1,13 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package pe.com.EmpresaCanario.service;
 
-/**
- *
- * @author Nestor
- */
+import java.util.List;
+import java.util.Optional;
+import pe.com.EmpresaCanario.entity.Detalle;
+
+
 public interface DetalleService {
-    
+    public List<Detalle> findAll();
+
+    public List<Detalle> findAllCustom();
+
+    public Optional<Detalle> findById(long id);
+
+    public Detalle add(Detalle d);
+
+    public Detalle update(Detalle d);
+
+    public Detalle delete(Detalle d);
 }

@@ -1,13 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package pe.com.EmpresaCanario.service;
 
-/**
- *
- * @author Nestor
- */
+import java.util.List;
+import java.util.Optional;
+import pe.com.EmpresaCanario.entity.Factura;
+
 public interface FacturaService {
-    
+    public List<Factura> findAll();
+
+    public List<Factura> findAllCustom();
+
+    public Optional<Factura> findById(long id);
+
+    public Factura add(Factura f);
+
+    public Factura update(Factura f);
+
+    public Factura delete(Factura f);
 }

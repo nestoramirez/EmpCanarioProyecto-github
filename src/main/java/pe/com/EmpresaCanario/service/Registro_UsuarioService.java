@@ -1,13 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package pe.com.EmpresaCanario.service;
 
-/**
- *
- * @author Nestor
- */
+import java.util.List;
+import java.util.Optional;
+import pe.com.EmpresaCanario.entity.Registro_Usuario;
+
 public interface Registro_UsuarioService {
-    
+    public List<Registro_Usuario> findAll();
+
+    public List<Registro_Usuario> findAllCustom();
+
+    public Optional<Registro_Usuario> findById(long id);
+
+    public Registro_Usuario add(Registro_Usuario p);
+
+    public Registro_Usuario update(Registro_Usuario p);
+
+    public Registro_Usuario delete(Registro_Usuario p);
 }

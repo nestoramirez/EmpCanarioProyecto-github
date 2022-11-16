@@ -1,13 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package pe.com.EmpresaCanario.service;
 
-/**
- *
- * @author Nestor
- */
+import java.util.List;
+import java.util.Optional;
+import pe.com.EmpresaCanario.entity.Pago;
+
 public interface PagoService {
-    
+    public List<Pago> findAll();
+
+    public List<Pago> findAllCustom();
+
+    public Optional<Pago> findById(long id);
+
+    public Pago add(Pago p);
+
+    public Pago update(Pago p);
+
+    public Pago delete(Pago p);
 }
