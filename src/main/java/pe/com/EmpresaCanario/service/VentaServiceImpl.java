@@ -5,45 +5,45 @@ import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.com.EmpresaCanario.entity.Factura;
-import pe.com.EmpresaCanario.repository.FacturaRepository;
+import pe.com.EmpresaCanario.entity.Venta;
+import pe.com.EmpresaCanario.repository.VentaRepository;
 
 @Service
-public class FacturaServiceImpl implements FacturaService {
+public class VentaServiceImpl implements VentaService {
 
     @Autowired
-    private FacturaRepository repositorio;
+    private VentaRepository repositorio;
     
     @Override
-    public List<Factura> findAll() {
+    public List<Venta> findAll() {
         return repositorio.findAll();
     }
 
     @Override
-    public List<Factura> findAllCustom() {
+    public List<Venta> findAllCustom() {
         return repositorio.findAllCustom();
     }
 
     @Override
-    public Optional<Factura> findById(long id) {
+    public Optional<Venta> findById(long id) {
         return repositorio.findById(id);
     }
 
     @Override
-    public Factura add(Factura f) {
+    public Venta add(Venta f) {
         return repositorio.save(f);
     }
 
     @Override
-    public Factura update(Factura f) {
-        Factura objfactura=repositorio.getById(f.getIdfactura());
+    public Venta update(Venta f) {
+        Venta objfactura=repositorio.getById(f.getIdventa());
         BeanUtils.copyProperties(f, objfactura);
         return repositorio.save(objfactura);
     }
 
     @Override
-    public Factura delete(Factura f) {
-        Factura objfactura=repositorio.getById(f.getIdfactura());
+    public Venta delete(Venta f) {
+        Venta objfactura=repositorio.getById(f.getIdventa());
         objfactura.setEstado(false);
         return repositorio.save(objfactura);
     }

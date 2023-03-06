@@ -5,45 +5,45 @@ import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.com.EmpresaCanario.entity.Detalle;
-import pe.com.EmpresaCanario.repository.DetalleRepository;
+import pe.com.EmpresaCanario.entity.Detalleventa;
+import pe.com.EmpresaCanario.repository.DetalleventaRepository;
 
 @Service
-public class DetalleServiceImpl implements DetalleService{
+public class DetalleventaServiceImpl implements DetalleventaService{
 
     @Autowired
-    private DetalleRepository repositorio;
+    private DetalleventaRepository repositorio;
     
     @Override
-    public List<Detalle> findAll() {
+    public List<Detalleventa> findAll() {
         return repositorio.findAll();
     }
 
     @Override
-    public List<Detalle> findAllCustom() {
+    public List<Detalleventa> findAllCustom() {
         return repositorio.findAllCustom();
     }
 
     @Override
-    public Optional<Detalle> findById(long id) {
+    public Optional<Detalleventa> findById(long id) {
         return repositorio.findById(id);
     }
 
     @Override
-    public Detalle add(Detalle d) {
+    public Detalleventa add(Detalleventa d) {
         return repositorio.save(d);
     }
 
     @Override
-    public Detalle update(Detalle d) {
-        Detalle objdetalle=repositorio.getById(d.getIddetalle());
+    public Detalleventa update(Detalleventa d) {
+        Detalleventa objdetalle=repositorio.getById(d.getIddetalleventa());
         BeanUtils.copyProperties(d, objdetalle);
         return repositorio.save(objdetalle);
     }
 
     @Override
-    public Detalle delete(Detalle d) {
-        Detalle objdetalle=repositorio.getById(d.getIddetalle());
+    public Detalleventa delete(Detalleventa d) {
+        Detalleventa objdetalle=repositorio.getById(d.getIddetalleventa());
         objdetalle.setEstado(false);
         return repositorio.save(objdetalle);
     }

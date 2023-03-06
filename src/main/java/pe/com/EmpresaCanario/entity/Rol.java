@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,20 +16,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity(name="Pago")
-@Table(name="pago")
-
-public class Pago implements Serializable{
+@Entity(name="Rol")
+@Table(name="rol")
+public class Rol implements Serializable{
     private static final long serialVersionUID=1L;
     @Id
-    @Column(name="id_pago")
+    @Column(name="id_rol")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idpago;
-    @ManyToOne
-    @JoinColumn(name="id_cliente", nullable=false)
-    private Cliente cliente;
-    @Column(name="tipo_pago")
-    private String tipopago;
+    private long idrol;
+    @Column(name="rol")
+    private String rol;
     @Column(name="estado")
     private boolean estado;
 }

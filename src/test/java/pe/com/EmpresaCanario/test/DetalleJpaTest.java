@@ -12,30 +12,27 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
-import pe.com.EmpresaCanario.entity.Detalle;
-import pe.com.EmpresaCanario.entity.Factura;
-import pe.com.EmpresaCanario.entity.Personalizacion;
+import pe.com.EmpresaCanario.entity.Detalleventa;
+import pe.com.EmpresaCanario.entity.Venta;
 import pe.com.EmpresaCanario.entity.Producto;
-import pe.com.EmpresaCanario.repository.DetalleRepository;
+import pe.com.EmpresaCanario.repository.DetalleventaRepository;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace=Replace.NONE)
 public class DetalleJpaTest {
 
-    private static Detalle objdetalle;
-    private static Factura objfactura;
+    private static Detalleventa objdetalle;
+    private static Venta objfactura;
     private static Producto objproducto;
-    private static Personalizacion objpersonalizacion;
     
     @Autowired
-    private DetalleRepository repositorio;
+    private DetalleventaRepository repositorio;
     
     @BeforeAll
     public static void Inicio(){
-        objdetalle=new Detalle();
-        objfactura=new Factura();
+        objdetalle=new Detalleventa();
+        objfactura=new Venta();
         objproducto=new Producto();
-        objpersonalizacion=new Personalizacion();
         System.out.println("@BeforeAll -->Inicio");
         
     }
@@ -45,7 +42,6 @@ public class DetalleJpaTest {
         objdetalle=null;
         objfactura=null;
         objproducto=null;
-        objpersonalizacion=null;
         System.out.println("@AfterAll -->Final()");
     }
     
@@ -57,14 +53,14 @@ public class DetalleJpaTest {
     
     @Test
     public void findAllTest(){
-        List<Detalle> detalle=repositorio.findAll();
+        List<Detalleventa> detalle=repositorio.findAll();
         assertNotNull(detalle);
         System.out.println("@Test -->findAllTest()");
     }
     
     @Test
     public void findAllCustomTest(){
-        List<Detalle> detalle=repositorio.findAllCustom();
+        List<Detalleventa> detalle=repositorio.findAllCustom();
         assertNotNull(detalle);
         System.out.println("@Test -->findAllCustomTest()");
     }
@@ -72,7 +68,7 @@ public class DetalleJpaTest {
     @Test
     public void findByIdTest(){
         long id=1;
-        Optional<Detalle> detalle=repositorio.findById(id);
+        Optional<Detalleventa> detalle=repositorio.findById(id);
         assertNotNull(detalle);
         System.out.println("@Test -->findByIdTest()");
     }
@@ -81,20 +77,18 @@ public class DetalleJpaTest {
     @Rollback(false)
     public void addTest(){
         
-        objfactura.setIdfactura(2);
-        objdetalle.setFactura(objfactura);
+        objfactura.setIdventa(2);
+        objdetalle.setVenta(objfactura);
         
         objproducto.setIdproducto(1);
         objdetalle.setProducto(objproducto);
         
-        objpersonalizacion.setIdpersonalizado(1);
-        objdetalle.setPersonalizacion(objpersonalizacion);
         
         objdetalle.setCantidad(500);
         objdetalle.setPrecio(99);
         objdetalle.setEstado(true);
         
-        Detalle detalle= repositorio.save(objdetalle);
+        Detalleventa detalle= repositorio.save(objdetalle);
         assertNotNull(detalle);
         System.out.println("@Test --> addTest()");
     }
@@ -103,22 +97,20 @@ public class DetalleJpaTest {
     @Rollback(false)
     public void updateTest(){
         
-        objdetalle.setIddetalle(2);
+        objdetalle.setIddetalleventa(2);
         
-        objfactura.setIdfactura(2);
-        objdetalle.setFactura(objfactura);
+        objfactura.setIdventa(2);
+        objdetalle.setVenta(objfactura);
         
         objproducto.setIdproducto(1);
         objdetalle.setProducto(objproducto);
         
-        objpersonalizacion.setIdpersonalizado(1);
-        objdetalle.setPersonalizacion(objpersonalizacion);
         
         objdetalle.setCantidad(500);
         objdetalle.setPrecio(99);
         objdetalle.setEstado(true);
         
-        Detalle detalle= repositorio.save(objdetalle);
+        Detalleventa detalle= repositorio.save(objdetalle);
         assertNotNull(detalle);
         System.out.println("@Test --> updateTest()");
     }
@@ -127,22 +119,20 @@ public class DetalleJpaTest {
     @Rollback(false)
     public void deleteTest(){
         
-        objdetalle.setIddetalle(1);
+        objdetalle.setIddetalleventa(1);
         
-        objfactura.setIdfactura(2);
-        objdetalle.setFactura(objfactura);
+        objfactura.setIdventa(2);
+        objdetalle.setVenta(objfactura);
         
         objproducto.setIdproducto(1);
         objdetalle.setProducto(objproducto);
         
-        objpersonalizacion.setIdpersonalizado(1);
-        objdetalle.setPersonalizacion(objpersonalizacion);
         
         objdetalle.setCantidad(500);
         objdetalle.setPrecio(99);
         objdetalle.setEstado(false);
         
-        Detalle detalle= repositorio.save(objdetalle);
+        Detalleventa detalle= repositorio.save(objdetalle);
         assertNotNull(detalle);
         System.out.println("@Test --> deleteTest()");
     }

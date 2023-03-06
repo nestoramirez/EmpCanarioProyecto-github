@@ -5,45 +5,45 @@ import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.com.EmpresaCanario.entity.Registro_Usuario;
-import pe.com.EmpresaCanario.repository.Registro_UsuarioRepository;
+import pe.com.EmpresaCanario.entity.Usuario;
+import pe.com.EmpresaCanario.repository.UsuarioRepository;
 
 @Service
-public class Registro_UsuarioServiceImpl implements Registro_UsuarioService {
+public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
-    private Registro_UsuarioRepository repositorio;
+    private UsuarioRepository repositorio;
     
     @Override
-    public List<Registro_Usuario> findAll() {
+    public List<Usuario> findAll() {
         return repositorio.findAll();
     }
 
     @Override
-    public List<Registro_Usuario> findAllCustom() {
+    public List<Usuario> findAllCustom() {
         return repositorio.findAllCustom();
     }
 
     @Override
-    public Optional<Registro_Usuario> findById(long id) {
+    public Optional<Usuario> findById(long id) {
         return repositorio.findById(id);
     }
 
     @Override
-    public Registro_Usuario add(Registro_Usuario r) {
+    public Usuario add(Usuario r) {
         return repositorio.save(r);
     }
 
     @Override
-    public Registro_Usuario update(Registro_Usuario r) {
-        Registro_Usuario objregistro=repositorio.getById(r.getIdregistro());
+    public Usuario update(Usuario r) {
+        Usuario objregistro=repositorio.getById(r.getIdusuario());
         BeanUtils.copyProperties(r, objregistro);
         return repositorio.save(objregistro);
     }
 
     @Override
-    public Registro_Usuario delete(Registro_Usuario r) {
-        Registro_Usuario objregistro=repositorio.getById(r.getIdregistro());
+    public Usuario delete(Usuario r) {
+        Usuario objregistro=repositorio.getById(r.getIdusuario());
         objregistro.setEstado(false);
         return repositorio.save(objregistro);
     }

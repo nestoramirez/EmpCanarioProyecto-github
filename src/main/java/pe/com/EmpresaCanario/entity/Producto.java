@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,10 +26,17 @@ public class Producto implements Serializable {
     @Column(name="id_producto")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idproducto;
-    @Column(name="tamano")
-    private float tamano;
+    @ManyToOne
+    @JoinColumn(name="id_categoria", nullable=false)
+    private Categoria categoria;
+    @Column(name="nombre")
+    private String nombre;
+    @Column(name="largo")
+    private float largo;
+    @Column(name="alto")
+    private float alto;
     @Column(name="stock")
-    private String stock;
+    private int stock;
     @Column(name="precio")
     private float precio;
     @Column(name="estado")

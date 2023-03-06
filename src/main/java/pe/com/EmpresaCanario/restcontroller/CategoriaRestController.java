@@ -11,46 +11,45 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.com.EmpresaCanario.entity.Pago;
-import pe.com.EmpresaCanario.service.PagoService;
+import pe.com.EmpresaCanario.entity.Categoria;
+import pe.com.EmpresaCanario.service.CategoriaService;
 
 @RestController
-@RequestMapping("/pago")
-public class PagoRestController {
-    
+@RequestMapping("/categoria")
+public class CategoriaRestController {
     @Autowired
-    private PagoService servicio;
+    private CategoriaService servicio;
 
     @GetMapping
-    public List<Pago> findAll() {
+    public List<Categoria> findAll() {
         return servicio.findAll();
     }
 
     @GetMapping("/custom")
-    public List<Pago> findAllCustom() {
+    public List<Categoria> findAllCustom() {
         return servicio.findAllCustom();
     }
 
     @GetMapping("/{id}")
-    public Optional<Pago> findById(@PathVariable Long id) {
+    public Optional<Categoria> findById(@PathVariable Long id) {
         return servicio.findById(id);
     }
 
     @PostMapping
-    public Pago add(@RequestBody Pago p) {
-        return servicio.add(p);
+    public Categoria add(@RequestBody Categoria r) {
+        return servicio.add(r);
     }
 
     @PutMapping("/{id}")
-    public Pago update(@PathVariable Long id,@RequestBody Pago p) {
-        p.setIdpago(id);
-        return servicio.add(p);
+    public Categoria update(@PathVariable Long id,@RequestBody Categoria r) {
+        r.setIdcategoria(id);
+        return servicio.add(r);
     }
     
     @DeleteMapping("/{id}")
-    public Pago delete(@PathVariable Long id) {
-        Pago objpago=new Pago();
-        objpago.setEstado(false);
-        return servicio.delete(Pago.builder().idpago(id).build());
+    public Categoria delete(@PathVariable Long id) {
+        Categoria objregistro=new Categoria();
+        objregistro.setEstado(false);
+        return servicio.delete(Categoria.builder().idcategoria(id).build());
     }
 }

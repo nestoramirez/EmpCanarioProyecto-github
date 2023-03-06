@@ -11,45 +11,45 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.com.EmpresaCanario.entity.Detalle;
-import pe.com.EmpresaCanario.service.DetalleService;
+import pe.com.EmpresaCanario.entity.Rol;
+import pe.com.EmpresaCanario.service.RolService;
 
 @RestController
-@RequestMapping("/detalle")
-public class DetalleRestController {
+@RequestMapping("/rol")
+public class RolRestController {
     @Autowired
-    private DetalleService servicio;
+    private RolService servicio;
 
     @GetMapping
-    public List<Detalle> findAll() {
+    public List<Rol> findAll() {
         return servicio.findAll();
     }
 
     @GetMapping("/custom")
-    public List<Detalle> findAllCustom() {
+    public List<Rol> findAllCustom() {
         return servicio.findAllCustom();
     }
 
     @GetMapping("/{id}")
-    public Optional<Detalle> findById(@PathVariable Long id) {
+    public Optional<Rol> findById(@PathVariable Long id) {
         return servicio.findById(id);
     }
 
     @PostMapping
-    public Detalle add(@RequestBody Detalle d) {
-        return servicio.add(d);
+    public Rol add(@RequestBody Rol p) {
+        return servicio.add(p);
     }
 
     @PutMapping("/{id}")
-    public Detalle update(@PathVariable Long id,@RequestBody Detalle d) {
-        d.setIddetalle(id);
-        return servicio.add(d);
+    public Rol update(@PathVariable Long id,@RequestBody Rol p) {
+        p.setIdrol(id);
+        return servicio.add(p);
     }
     
     @DeleteMapping("/{id}")
-    public Detalle delete(@PathVariable Long id) {
-        Detalle objdetalle=new Detalle();
-        objdetalle.setEstado(false);
-        return servicio.delete(Detalle.builder().iddetalle(id).build());
+    public Rol delete(@PathVariable Long id) {
+        Rol objproducto=new Rol();
+        objproducto.setEstado(false);
+        return servicio.delete(Rol.builder().idrol(id).build());
     }
 }

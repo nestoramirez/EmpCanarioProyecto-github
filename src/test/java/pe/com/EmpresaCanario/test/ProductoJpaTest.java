@@ -12,9 +12,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
-import pe.com.EmpresaCanario.entity.Personalizacion;
 import pe.com.EmpresaCanario.entity.Producto;
-import pe.com.EmpresaCanario.repository.PersonalizacionRepository;
 import pe.com.EmpresaCanario.repository.ProductoRepository;
 
 @DataJpaTest
@@ -70,8 +68,9 @@ public class ProductoJpaTest {
     @Rollback(false)
     public void addTest(){
         
-        objproducto.setTamano(80);
-        objproducto.setStock("objproducto");
+        objproducto.setLargo(80);
+        objproducto.setAlto(80);
+        objproducto.setStock(12);
         objproducto.setPrecio(40);
         objproducto.setEstado(true);
         
@@ -86,8 +85,9 @@ public class ProductoJpaTest {
         
         objproducto.setIdproducto(2);
         
-        objproducto.setTamano(80);
-        objproducto.setStock("125 rompecabezas");
+        objproducto.setLargo(80);
+        objproducto.setAlto(80);
+        objproducto.setStock(12);
         objproducto.setPrecio(60);
         objproducto.setEstado(true);
         
@@ -102,8 +102,9 @@ public class ProductoJpaTest {
         
         objproducto.setIdproducto(3);
         
-        objproducto.setTamano(80);
-        objproducto.setStock("125 rompecabezas");
+        objproducto.setLargo(80);
+        objproducto.setAlto(80);
+        objproducto.setStock(125);
         objproducto.setPrecio(60);
         objproducto.setEstado(false);
         

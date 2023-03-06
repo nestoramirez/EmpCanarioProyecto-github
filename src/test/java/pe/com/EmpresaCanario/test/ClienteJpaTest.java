@@ -13,7 +13,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 import pe.com.EmpresaCanario.entity.Cliente;
-import pe.com.EmpresaCanario.entity.Registro_Usuario;
+import pe.com.EmpresaCanario.entity.Usuario;
 import pe.com.EmpresaCanario.repository.ClienteRepository;
 
 @DataJpaTest
@@ -21,14 +21,14 @@ import pe.com.EmpresaCanario.repository.ClienteRepository;
 public class ClienteJpaTest {
 
     private static Cliente objcliente;
-    private static Registro_Usuario objregistro;
+    private static Usuario objregistro;
     @Autowired
     private ClienteRepository repositorio;
     
     @BeforeAll
     public static void Inicio(){
         objcliente=new Cliente();
-        objregistro=new Registro_Usuario();
+        objregistro=new Usuario();
         System.out.println("@BeforeAll -->Inicio");
         
     }
@@ -72,8 +72,8 @@ public class ClienteJpaTest {
     @Rollback(false)
     public void addTest(){
         
-        objregistro.setIdregistro(5);
-        objcliente.setRegistrousuario(objregistro);
+        objregistro.setIdusuario(5);
+        objcliente.setUsuario(objregistro);
         
         objcliente.setEstado(true);
         
@@ -88,8 +88,8 @@ public class ClienteJpaTest {
         
         objcliente.setIdcliente(2);
         
-        objregistro.setIdregistro(7);
-        objcliente.setRegistrousuario(objregistro);
+        objregistro.setIdusuario(7);
+        objcliente.setUsuario(objregistro);
         
         objcliente.setEstado(true);
         
@@ -104,8 +104,8 @@ public class ClienteJpaTest {
         
         objcliente.setIdcliente(2);
         
-        objregistro.setIdregistro(7);
-        objcliente.setRegistrousuario(objregistro);
+        objregistro.setIdusuario(7);
+        objcliente.setUsuario(objregistro);
         
         objcliente.setEstado(false);
         

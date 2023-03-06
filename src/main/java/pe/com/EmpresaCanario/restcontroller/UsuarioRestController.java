@@ -11,45 +11,46 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.com.EmpresaCanario.entity.Factura;
-import pe.com.EmpresaCanario.service.FacturaService;
+import pe.com.EmpresaCanario.entity.Usuario;
+import pe.com.EmpresaCanario.service.UsuarioService;
 
 @RestController
-@RequestMapping("/factura")
-public class FacturaRestController {
+@RequestMapping("/usuario")
+public class UsuarioRestController {
+    
     @Autowired
-    private FacturaService servicio;
+    private UsuarioService servicio;
 
     @GetMapping
-    public List<Factura> findAll() {
+    public List<Usuario> findAll() {
         return servicio.findAll();
     }
 
     @GetMapping("/custom")
-    public List<Factura> findAllCustom() {
+    public List<Usuario> findAllCustom() {
         return servicio.findAllCustom();
     }
 
     @GetMapping("/{id}")
-    public Optional<Factura> findById(@PathVariable Long id) {
+    public Optional<Usuario> findById(@PathVariable Long id) {
         return servicio.findById(id);
     }
 
     @PostMapping
-    public Factura add(@RequestBody Factura f) {
-        return servicio.add(f);
+    public Usuario add(@RequestBody Usuario r) {
+        return servicio.add(r);
     }
 
     @PutMapping("/{id}")
-    public Factura update(@PathVariable Long id,@RequestBody Factura f) {
-        f.setIdfactura(id);
-        return servicio.add(f);
+    public Usuario update(@PathVariable Long id,@RequestBody Usuario r) {
+        r.setIdusuario(id);
+        return servicio.add(r);
     }
     
     @DeleteMapping("/{id}")
-    public Factura delete(@PathVariable Long id) {
-        Factura objfactura=new Factura();
-        objfactura.setEstado(false);
-        return servicio.delete(Factura.builder().idfactura(id).build());
+    public Usuario delete(@PathVariable Long id) {
+        Usuario objregistro=new Usuario();
+        objregistro.setEstado(false);
+        return servicio.delete(Usuario.builder().idusuario(id).build());
     }
 }

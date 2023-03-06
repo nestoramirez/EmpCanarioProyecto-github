@@ -1,6 +1,5 @@
 package pe.com.EmpresaCanario.entity;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,21 +17,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity(name="Factura")
-@Table(name="factura")
-public class Factura implements Serializable {
+@Entity(name="Empleado")
+@Table(name="empleado")
+public class Empleado {
+    private static final long serialVersionUID=1L;
     @Id
-    @Column(name="id_factura")
+    @Column(name="id_empleado")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idfactura;
+    private long idempleado;
     @ManyToOne
-    @JoinColumn(name="id_cliente", nullable=false)
-    private Cliente cliente;
-    @ManyToOne
-    @JoinColumn(name="id_pago", nullable=false)
-    private Pago pago;
-    @Column(name="fecha")
-    private String fecha;
+    @JoinColumn(name="id_usuario", nullable=false)
+    private Usuario usuario;
     @Column(name="estado")
     private boolean estado;
 }

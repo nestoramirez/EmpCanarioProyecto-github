@@ -11,46 +11,45 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.com.EmpresaCanario.entity.Registro_Usuario;
-import pe.com.EmpresaCanario.service.Registro_UsuarioService;
+import pe.com.EmpresaCanario.entity.Venta;
+import pe.com.EmpresaCanario.service.VentaService;
 
 @RestController
-@RequestMapping("/registro_usuario")
-public class Registro_UsuarioRestController {
-    
+@RequestMapping("/venta")
+public class VentaRestController {
     @Autowired
-    private Registro_UsuarioService servicio;
+    private VentaService servicio;
 
     @GetMapping
-    public List<Registro_Usuario> findAll() {
+    public List<Venta> findAll() {
         return servicio.findAll();
     }
 
     @GetMapping("/custom")
-    public List<Registro_Usuario> findAllCustom() {
+    public List<Venta> findAllCustom() {
         return servicio.findAllCustom();
     }
 
     @GetMapping("/{id}")
-    public Optional<Registro_Usuario> findById(@PathVariable Long id) {
+    public Optional<Venta> findById(@PathVariable Long id) {
         return servicio.findById(id);
     }
 
     @PostMapping
-    public Registro_Usuario add(@RequestBody Registro_Usuario r) {
-        return servicio.add(r);
+    public Venta add(@RequestBody Venta f) {
+        return servicio.add(f);
     }
 
     @PutMapping("/{id}")
-    public Registro_Usuario update(@PathVariable Long id,@RequestBody Registro_Usuario r) {
-        r.setIdregistro(id);
-        return servicio.add(r);
+    public Venta update(@PathVariable Long id,@RequestBody Venta f) {
+        f.setIdventa(id);
+        return servicio.add(f);
     }
     
     @DeleteMapping("/{id}")
-    public Registro_Usuario delete(@PathVariable Long id) {
-        Registro_Usuario objregistro=new Registro_Usuario();
-        objregistro.setEstado(false);
-        return servicio.delete(Registro_Usuario.builder().idregistro(id).build());
+    public Venta delete(@PathVariable Long id) {
+        Venta objfactura=new Venta();
+        objfactura.setEstado(false);
+        return servicio.delete(Venta.builder().idventa(id).build());
     }
 }

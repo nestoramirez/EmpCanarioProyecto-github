@@ -14,31 +14,39 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity(name="Detalle")
-@Table(name="detalle")
-public class Detalle implements Serializable {
+@Entity(name="Usuario")
+@Table(name="usuario")
+public class Usuario implements Serializable {
     private static final long serialVersionUID=1L;
     @Id
-    @Column(name="id_detalle")
+    @Column(name="id_usuario")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long iddetalle;
+    private long idusuario;
     @ManyToOne
-    @JoinColumn(name="id_factura", nullable=false)
-    private Factura factura;
-    @ManyToOne
-    @JoinColumn(name="id_producto", nullable=false)
-    private Producto producto;
-    @ManyToOne
-    @JoinColumn(name="id_personalizado", nullable=false)
-    private Personalizacion personalizacion;
-    @Column(name="cantidad")
-    private int cantidad;
-    @Column(name="precio")
-    private float precio;
+    @JoinColumn(name="id_rol", nullable=false)
+    private Rol rol;
+    @Column(name="nombre")
+    private String nombre;
+    @Column(name="apepaterno")
+    private String apepaterno;
+    @Column(name="apematerno")
+    private String apematerno;
+    @Column(name="dni")
+    private String dni;
+    @Column(name="correo")
+    private String correo;
+    @Column(name="celular")
+    private String celular;
+    @Column(name="direccion")
+    private String direccion;
+    @Column(name="contrasena")
+    private String contrasena;
     @Column(name="estado")
     private boolean estado;
+    
 }

@@ -11,46 +11,45 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.com.EmpresaCanario.entity.Personalizacion;
-import pe.com.EmpresaCanario.service.PersonalizacionService;
+import pe.com.EmpresaCanario.entity.Empleado;
+import pe.com.EmpresaCanario.service.EmpleadoService;
 
 @RestController
-@RequestMapping("/personalizacion")
-public class PersonalizacionRestController {
-    
+@RequestMapping("/empleado")
+public class EmpleadoRestController {
     @Autowired
-    private PersonalizacionService servicio;
+    private EmpleadoService servicio;
 
     @GetMapping
-    public List<Personalizacion> findAll() {
+    public List<Empleado> findAll() {
         return servicio.findAll();
     }
 
     @GetMapping("/custom")
-    public List<Personalizacion> findAllCustom() {
+    public List<Empleado> findAllCustom() {
         return servicio.findAllCustom();
     }
 
     @GetMapping("/{id}")
-    public Optional<Personalizacion> findById(@PathVariable Long id) {
+    public Optional<Empleado> findById(@PathVariable Long id) {
         return servicio.findById(id);
     }
 
     @PostMapping
-    public Personalizacion add(@RequestBody Personalizacion p) {
+    public Empleado add(@RequestBody Empleado p) {
         return servicio.add(p);
     }
 
     @PutMapping("/{id}")
-    public Personalizacion update(@PathVariable Long id,@RequestBody Personalizacion p) {
-        p.setIdpersonalizado(id);
+    public Empleado update(@PathVariable Long id,@RequestBody Empleado p) {
+        p.setIdempleado(id);
         return servicio.add(p);
     }
     
     @DeleteMapping("/{id}")
-    public Personalizacion delete(@PathVariable Long id) {
-        Personalizacion objpersonalizacion=new Personalizacion();
-        objpersonalizacion.setEstado(false);
-        return servicio.delete(Personalizacion.builder().idpersonalizado(id).build());
+    public Empleado delete(@PathVariable Long id) {
+        Empleado objproducto=new Empleado();
+        objproducto.setEstado(false);
+        return servicio.delete(Empleado.builder().idempleado(id).build());
     }
 }

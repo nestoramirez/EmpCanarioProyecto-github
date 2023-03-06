@@ -12,24 +12,22 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
-import pe.com.EmpresaCanario.entity.Personalizacion;
 import pe.com.EmpresaCanario.entity.Producto;
-import pe.com.EmpresaCanario.entity.Registro_Usuario;
-import pe.com.EmpresaCanario.repository.PersonalizacionRepository;
+import pe.com.EmpresaCanario.entity.Usuario;
 import pe.com.EmpresaCanario.repository.ProductoRepository;
-import pe.com.EmpresaCanario.repository.Registro_UsuarioRepository;
+import pe.com.EmpresaCanario.repository.UsuarioRepository;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace=Replace.NONE)
 public class Registro_UsuarioJpaTest {
 
-    private static Registro_Usuario objregistrousuario;
+    private static Usuario objregistrousuario;
     @Autowired
-    private Registro_UsuarioRepository repositorio;
+    private UsuarioRepository repositorio;
     
     @BeforeAll
     public static void Inicio(){
-        objregistrousuario=new Registro_Usuario();
+        objregistrousuario=new Usuario();
         System.out.println("@BeforeAll -->Inicio");
         
     }
@@ -48,14 +46,14 @@ public class Registro_UsuarioJpaTest {
     
     @Test
     public void findAllTest(){
-        List<Registro_Usuario> registro_usuario=repositorio.findAll();
+        List<Usuario> registro_usuario=repositorio.findAll();
         assertNotNull(registro_usuario);
         System.out.println("@Test -->findAllTest()");
     }
     
     @Test
     public void findAllCustomTest(){
-        List<Registro_Usuario> registro_usuario=repositorio.findAllCustom();
+        List<Usuario> registro_usuario=repositorio.findAllCustom();
         assertNotNull(registro_usuario);
         System.out.println("@Test -->findAllCustomTest()");
     }
@@ -63,7 +61,7 @@ public class Registro_UsuarioJpaTest {
     @Test
     public void findByIdTest(){
         long id=1;
-        Optional<Registro_Usuario> registro_usuario=repositorio.findById(id);
+        Optional<Usuario> registro_usuario=repositorio.findById(id);
         assertNotNull(registro_usuario);
         System.out.println("@Test -->findByIdTest()");
     }
@@ -73,15 +71,16 @@ public class Registro_UsuarioJpaTest {
     public void addTest(){
         
         objregistrousuario.setNombre("Diego");
-        objregistrousuario.setApellido("Davila");
+        objregistrousuario.setApepaterno("Davila");
+        objregistrousuario.setApematerno("Davila");
         objregistrousuario.setDni("87654321");
         objregistrousuario.setCorreo("jalb@gmail.com");
-        objregistrousuario.setTelefono("987654321");
+        objregistrousuario.setCelular("987654321");
         objregistrousuario.setDireccion("Av.Leon Prado");
         objregistrousuario.setContrasena("123juan");
         objregistrousuario.setEstado(true);
         
-        Registro_Usuario registro_usuario= repositorio.save(objregistrousuario);
+        Usuario registro_usuario= repositorio.save(objregistrousuario);
         assertNotNull(registro_usuario);
         System.out.println("@Test --> addTest()");
     }
@@ -90,18 +89,19 @@ public class Registro_UsuarioJpaTest {
     @Rollback(false)
     public void updateTest(){
         
-        objregistrousuario.setIdregistro(3);
+        objregistrousuario.setIdusuario(3);
         
         objregistrousuario.setNombre("Juan Leonardo");
-        objregistrousuario.setApellido("Albornoz Alejo");
+        objregistrousuario.setApepaterno("Albornoz Alejo");
+        objregistrousuario.setApematerno("Albornoz Alejo");
         objregistrousuario.setDni("87654321");
         objregistrousuario.setCorreo("jalb@gmail.com");
-        objregistrousuario.setTelefono("987654321");
+        objregistrousuario.setCelular("987654321");
         objregistrousuario.setDireccion("Av.Leon Prado");
         objregistrousuario.setContrasena("123juan");
         objregistrousuario.setEstado(true);
         
-        Registro_Usuario registro_usuario= repositorio.save(objregistrousuario);
+        Usuario registro_usuario= repositorio.save(objregistrousuario);
         assertNotNull(registro_usuario);
         System.out.println("@Test --> updateTest()");
     }
@@ -110,18 +110,19 @@ public class Registro_UsuarioJpaTest {
     @Rollback(false)
     public void deleteTest(){
         
-        objregistrousuario.setIdregistro(2);
+        objregistrousuario.setIdusuario(2);
         
         objregistrousuario.setNombre("Juan Leonardo");
-        objregistrousuario.setApellido("Albornoz Alejo");
+        objregistrousuario.setApepaterno("Albornoz Alejo");
+        objregistrousuario.setApematerno("Alejo");
         objregistrousuario.setDni("87654321");
         objregistrousuario.setCorreo("jalb@gmail.com");
-        objregistrousuario.setTelefono("987654321");
+        objregistrousuario.setCelular("987654321");
         objregistrousuario.setDireccion("Av.Leon Prado");
         objregistrousuario.setContrasena("123juan");
         objregistrousuario.setEstado(false);
         
-        Registro_Usuario registro_usuario= repositorio.save(objregistrousuario);
+        Usuario registro_usuario= repositorio.save(objregistrousuario);
         assertNotNull(registro_usuario);
         System.out.println("@Test --> deleteTest()");
     }

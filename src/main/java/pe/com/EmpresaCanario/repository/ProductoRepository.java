@@ -7,5 +7,5 @@ import pe.com.EmpresaCanario.entity.Producto;
 
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
     @Query("select p from Producto p where p.estado='1'")
-    List<Producto> findAllCustom();
+        List<Producto> findAllCustom();
 }

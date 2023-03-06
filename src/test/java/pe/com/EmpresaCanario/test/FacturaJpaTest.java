@@ -13,25 +13,22 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 import pe.com.EmpresaCanario.entity.Cliente;
-import pe.com.EmpresaCanario.entity.Factura;
-import pe.com.EmpresaCanario.entity.Pago;
-import pe.com.EmpresaCanario.repository.FacturaRepository;
+import pe.com.EmpresaCanario.entity.Venta;
+import pe.com.EmpresaCanario.repository.VentaRepository;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace=Replace.NONE)
 public class FacturaJpaTest {
 
-    private static Factura objfactura;
+    private static Venta objfactura;
     private static Cliente objcliente;
-    private static Pago objpago;
     @Autowired
-    private FacturaRepository repositorio;
+    private VentaRepository repositorio;
     
     @BeforeAll
     public static void Inicio(){
-        objfactura=new Factura();
+        objfactura=new Venta();
         objcliente=new Cliente();
-        objpago=new Pago();
         System.out.println("@BeforeAll -->Inicio");
         
     }
@@ -40,7 +37,6 @@ public class FacturaJpaTest {
     public static void Final(){
         objfactura=null;
         objcliente=null;
-        objpago=null;
         System.out.println("@AfterAll -->Final()");
     }
     
@@ -52,14 +48,14 @@ public class FacturaJpaTest {
     
     @Test
     public void findAllTest(){
-        List<Factura> factura=repositorio.findAll();
+        List<Venta> factura=repositorio.findAll();
         assertNotNull(factura);
         System.out.println("@Test -->findAllTest()");
     }
     
     @Test
     public void findAllCustomTest(){
-        List<Factura> factura=repositorio.findAllCustom();
+        List<Venta> factura=repositorio.findAllCustom();
         assertNotNull(factura);
         System.out.println("@Test -->findAllCustomTest()");
     }
@@ -67,7 +63,7 @@ public class FacturaJpaTest {
     @Test
     public void findByIdTest(){
         long id=1;
-        Optional<Factura> factura=repositorio.findById(id);
+        Optional<Venta> factura=repositorio.findById(id);
         assertNotNull(factura);
         System.out.println("@Test -->findByIdTest()");
     }
@@ -79,13 +75,11 @@ public class FacturaJpaTest {
         objcliente.setIdcliente(2);
         objfactura.setCliente(objcliente);
         
-        objpago.setIdpago(2);
-        objfactura.setPago(objpago);
         
         objfactura.setFecha("2022-02-22");
         objfactura.setEstado(true);
         
-        Factura factura= repositorio.save(objfactura);
+        Venta factura= repositorio.save(objfactura);
         assertNotNull(factura);
         System.out.println("@Test --> addTest()");
     }
@@ -94,18 +88,15 @@ public class FacturaJpaTest {
     @Rollback(false)
     public void updateTest(){
         
-        objfactura.setIdfactura(3);
+        objfactura.setIdventa(3);
         
         objcliente.setIdcliente(3);
         objfactura.setCliente(objcliente);
         
-        objpago.setIdpago(3);
-        objfactura.setPago(objpago);
-        
         objfactura.setFecha("2022-02-22");
         objfactura.setEstado(true);
         
-        Factura factura= repositorio.save(objfactura);
+        Venta factura= repositorio.save(objfactura);
         assertNotNull(factura);
         System.out.println("@Test --> updateTest()");
     }
@@ -114,18 +105,15 @@ public class FacturaJpaTest {
     @Rollback(false)
     public void deleteTest(){
         
-        objfactura.setIdfactura(3);
+        objfactura.setIdventa(3);
         
         objcliente.setIdcliente(3);
         objfactura.setCliente(objcliente);
         
-        objpago.setIdpago(3);
-        objfactura.setPago(objpago);
-        
         objfactura.setFecha("2022-02-22");
         objfactura.setEstado(false);
         
-        Factura factura= repositorio.save(objfactura);
+        Venta factura= repositorio.save(objfactura);
         assertNotNull(factura);
         System.out.println("@Test --> deleteTest()");
     }
